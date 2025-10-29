@@ -1,0 +1,11 @@
+name: secret-scan-trufflehog
+on: [push, pull_request]
+jobs:
+  trufflehog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run TruffleHog
+        uses: trufflesecurity/trufflehog@v3
+        with:
+          extra_args: --entropy=False --only-verified
